@@ -9,10 +9,12 @@ public class ClientNetwork extends Thread {
  
     private DatagramSocket ds; // 서브 소켓(receive용)
     private String ui;
+    
     public User[] users;
     public int userNum;
     public String card;
-    public boolean flag = false;
+    public int flag = 0; // 0: Loading / 1: Card / 2: Horse / 3: Winner / 4: Game Over
+    public int symbol = 0, curPosition = 0, movePosition = 0;
  
     public ClientNetwork(String c) {
         this.ui = c;
@@ -79,9 +81,15 @@ public class ClientNetwork extends Thread {
             	users[Integer.valueOf(command[1])] = new User(command[2], 0);
             	break;
             case "c":
-            	flag = true;
+            	flag = 1;
             	card = command[1];
             	System.out.println(card);
+            	break;
+            case "h":
+            	flag = 2;
+            	symbol = Integer.valueOf(command[1]);
+            	curPosition = Integer.valueOf(command[2]);
+            	movePosition = Integer.valueOf(command[3]);
             	break;
             }
         }

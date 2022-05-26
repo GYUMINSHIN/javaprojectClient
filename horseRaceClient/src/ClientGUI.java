@@ -53,8 +53,8 @@ public class ClientGUI extends JFrame {
 		this.setVisible(true);
 	}
 	
-	public void showCard(Card card) {
-		cardLabel.setText("»ÌÀº Ä«µå: " + card.toString());
+	public void showCard(String card) {
+		cardLabel.setText("»ÌÀº Ä«µå: " + card);
 		cardLabel.repaint();
 	}
 	
