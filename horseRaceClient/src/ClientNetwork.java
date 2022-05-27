@@ -68,7 +68,7 @@ public class ClientNetwork extends Thread {
             System.out.println(received);
             command = received.split("#");
             Object resp = null;
-            System.out.println(command[0]);
+//            System.out.println(command[0]);
             switch(command[0]) {
             case "s":
             	System.out.println(command[1]);
@@ -81,15 +81,42 @@ public class ClientNetwork extends Thread {
             	users[Integer.valueOf(command[1])] = new User(command[2], 0);
             	break;
             case "c":
+            	while (flag != 0) {
+            		try {
+//            			System.out.println(flag);
+						this.sleep(10);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+            	}
             	flag = 1;
             	card = command[1];
-            	System.out.println(card);
+//            	System.out.println(card);
             	break;
             case "h":
+            	while (flag != 0) {
+            		try {
+//            			System.out.println(flag);
+						this.sleep(10);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+            	}
             	flag = 2;
             	symbol = Integer.valueOf(command[1]);
             	curPosition = Integer.valueOf(command[2]);
             	movePosition = Integer.valueOf(command[3]);
+            	break;
+            case "w":
+            	while (flag != 0) {
+            		try {
+            			this.sleep(10);
+            		} catch (InterruptedException e) {
+            			e.printStackTrace();
+            		}
+            	}
+            	flag = 3;
+            	users[Integer.valueOf(command[1])].score = Integer.valueOf(command[2]);
             	break;
             }
         }
