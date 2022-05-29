@@ -1,7 +1,5 @@
 import java.awt.*;
-import java.awt.event.*;
 import javax.swing.*;
-import javax.swing.event.*;
 
 public class ClientGUI extends JFrame {
 	Font font = new Font("¸¼Àº °íµñ", Font.PLAIN, 25);
