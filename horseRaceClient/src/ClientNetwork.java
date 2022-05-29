@@ -13,7 +13,6 @@ public class ClientNetwork extends Thread {
     public int symbol = 0, curPosition = 0, movePosition = 0;
  
     public ClientNetwork(String c) {
-        this.ui = c;
         System.out.println("연결중");
         try {
             soc = new Socket(c, 8040);
@@ -24,8 +23,6 @@ public class ClientNetwork extends Thread {
             {
                 System.out.println("[client] connected to server");	
             }
-            ds = new DatagramSocket(soc.getLocalPort()); // // TCP와 UDP는 같은 포트로 사용할 수 있음.
- 
         } catch (IOException e) {
             System.out.println("[client] network error " + e.toString());
         }
