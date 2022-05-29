@@ -65,13 +65,13 @@ public class ClientNetwork extends Thread {
                 System.out.println("[client] 비정상 종료");
             }
             
-            System.out.println(received);
+//            System.out.println(received);
             command = received.split("#");
             Object resp = null;
 //            System.out.println(command[0]);
             switch(command[0]) {
             case "s":
-            	System.out.println(command[1]);
+//            	System.out.println(command[1]);
             	break;
             case "n":
             	userNum = Integer.valueOf(command[1]);
@@ -79,6 +79,7 @@ public class ClientNetwork extends Thread {
             	break;
             case "u":
             	users[Integer.valueOf(command[1])] = new User(command[2], 0);
+//            	System.out.println(users[Integer.valueOf(command[1])].name);
             	break;
             case "c":
             	while (flag != 0) {
@@ -89,9 +90,9 @@ public class ClientNetwork extends Thread {
 						e.printStackTrace();
 					}
             	}
-            	flag = 1;
             	card = command[1];
 //            	System.out.println(card);
+            	flag = 1;
             	break;
             case "h":
             	while (flag != 0) {
@@ -102,10 +103,10 @@ public class ClientNetwork extends Thread {
 						e.printStackTrace();
 					}
             	}
-            	flag = 2;
             	symbol = Integer.valueOf(command[1]);
             	curPosition = Integer.valueOf(command[2]);
             	movePosition = Integer.valueOf(command[3]);
+            	flag = 2;
             	break;
             case "w":
             	while (flag != 0) {
@@ -115,8 +116,19 @@ public class ClientNetwork extends Thread {
             			e.printStackTrace();
             		}
             	}
-            	flag = 3;
+				System.out.println(users[Integer.valueOf(command[1])].name + " gets " + (Integer.valueOf(command[2]) - users[Integer.valueOf(command[1])].score) + " points!");
             	users[Integer.valueOf(command[1])].score = Integer.valueOf(command[2]);
+            	flag = 3;
+            	break;
+            case "e":
+            	while (flag != 0) {
+            		try {
+            			this.sleep(10);
+            		} catch (InterruptedException e) {
+            			e.printStackTrace();
+            		}
+            	}
+            	flag = 4;
             	break;
             }
         }
